@@ -99,4 +99,42 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
+// Touch event handling
+let touchStartX = null;
+let touchStartY = null;
+
+window.addEventListener('touchstart', (event) => {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', (event) => {
+    if (!touchStartX || !touchStartY) return;
+
+    const touchEndX = event.touches[0].clientX;
+    const touchEndY = event.touches[0].clientY;
+
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        // Horizontal swipe
+        if (diffX > 0) {
+            player.position.x = Math.max(player.position.x - 0.5, -4);
+        } else {
+            player.position.x = Math.min(player.position.x + 0.5, 4);
+        }
+    } else {
+    // Vertical swipe
+    if (diffY > 0) {
+        player.position.y = Math.min(player.position.y + 0.5, 1);
+    } else {
+        player.position.y = Math.max(player.position.y - 0.5, -3);
+    }
+    }
+
+    touchStartX = null;
+    touchStartY = null;
+    });
+
 document.getElementById('restart-button').addEventListener('click', resetGame);
