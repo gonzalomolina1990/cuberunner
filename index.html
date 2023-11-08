@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Endless Runner</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        #game-container { position: relative; }
+        #score-display { position: absolute; top: 10px; left: 10px; color: white; }
+        #restart-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <span id="score-display">Score: 0</span>
+        <button id="restart-button">Restart</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
